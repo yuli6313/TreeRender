@@ -4,6 +4,7 @@
 #include <memory>
 #include <QFontMetrics>
 #include <algorithm>
+#include <QDebug>
 #include "treenode.h"
 
 class InnerNode : public TreeNode
@@ -47,6 +48,7 @@ public:
         l2.setY(y_offset - l2.y());
         painter.drawLine(l1, l2);
         painter.drawText(QRect(label_pos.x(), y_offset - label_pos.y(), fm.width(label), fm.height()), label);
+        qDebug() << fm.height();
     }
 
 private:

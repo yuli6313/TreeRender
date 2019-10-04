@@ -26,10 +26,10 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
-    explicit Widget(char* jsonFile, int font_size = 11, uint32_t dx = 5, uint32_t dy = 5, QWidget *parent = nullptr) :
+    explicit Widget(char* jsonFile, int font_size = 11, uint32_t dx = 10, uint32_t dy = 5, QWidget *parent = nullptr) :
         ui(new Ui::Widget),
         QWidget(parent),
-        fm(QFontMetrics(QFont())),
+        fm(QFontMetrics(QFont("Cantarell", font_size))), // construct a dummy QFontMetrics, will be changed to
         font_size(font_size),
         dx(dx), dy(dy) {
         ui->setupUi(this);
@@ -53,10 +53,7 @@ public:
         QPainter painter(this);
         QFont f;
         f.setPointSize(font_size);
-        fm = QFontMetrics(f);
         painter.setFont(f);
-        // place the nodes
-
         // render the nodes
         tree->render(painter, tree->getHeight());
     }
